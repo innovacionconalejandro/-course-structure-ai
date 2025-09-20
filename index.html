@@ -3,488 +3,294 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programa: Aumenta Tu Productividad Profesional con IA | Ant-Ara</title>
+    <title>Ecosistema de Cursos de IA para Productividad | Ant-Ara</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background: #f8fafc;
+            color: #334155;
         }
         
-        .hero-gradient {
+        .header-gradient {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         
-        .course-row {
+        .course-card {
             transition: all 0.3s ease;
-            cursor: pointer;
+            border-left: 4px solid;
         }
         
-        .course-row:hover {
-            transform: translateX(5px);
-            background-color: #f8fafc;
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
-        .modal {
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
+        .champion-special {
+            background: linear-gradient(135deg, #fff9db 0%, #ffecb3 100%);
+            border-left-color: #ffb300;
         }
         
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
+        .print-only {
+            display: none;
         }
         
-        .popup {
-            animation: slideIn 0.5s ease-out;
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        .premium-badge {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        @media print {
+            .no-print {
+                display: none;
+            }
+            .print-only {
+                display: block;
+            }
+            body {
+                background: white;
+                font-size: 12pt;
+            }
+            .page-break {
+                page-break-after: always;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen">
-    <!-- Header -->
-    <header class="hero-gradient text-white py-12">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex justify-center mb-6">
-                <img src="https://i.imgur.com/kTSdMiT.png" alt="Ant-Ara" class="h-16 mr-4">
-                <img src="https://i.imgur.com/U1mRq72.png" alt="Innovar con Alejandro" class="h-16 mr-4">
-                <img src="https://i.imgur.com/ObMZWAw.png" alt="Despacho Jorge" class="h-16">
-            </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Aumenta Tu Productividad Profesional con IA</h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Programa integral de 6 cursos diseñado para transformar PYMEs guatemaltecas</p>
+<body class="max-w-4xl mx-auto py-8 px-4 bg-white shadow-lg">
+    <!-- Encabezado -->
+    <header class="header-gradient text-white rounded-xl p-8 mb-8 text-center">
+        <div class="flex justify-center items-center mb-6">
+            <img src="https://i.imgur.com/kTSdMiT.png" alt="Ant-Ara" class="h-16 mx-4">
+            <img src="https://i.imgur.com/U1mRq72.png" alt="Innovar con Alejandro" class="h-16 mx-4">
+            <img src="https://i.imgur.com/ObMZWAw.png" alt="Despacho Jorge" class="h-16 mx-4">
         </div>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">Ecosistema de Cursos de IA para Productividad</h1>
+        <p class="text-xl opacity-90">Transformando profesionales y empresas guatemaltecas mediante la inteligencia artificial aplicada</p>
     </header>
 
-    <!-- Tabla de Cursos -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nuestros Cursos Disponibles</h2>
-                <p class="text-xl text-gray-600">Haz clic en cualquier curso para ver detalles completos</p>
-            </div>
+    <!-- Introducción -->
+    <section class="mb-12">
+        <h2 class="text-2xl font-bold text-slate-800 mb-4">Nuestro Ecosistema de Valor</h2>
+        <div class="bg-slate-50 rounded-lg p-6">
+            <p class="mb-4">Hemos creado un ecosistema único que combina tres marcas especializadas para ofrecer la mejor formación en inteligencia artificial aplicada a la productividad profesional:</p>
             
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <table class="w-full">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="py-4 px-6 text-left">Curso</th>
-                            <th class="py-4 px-6 text-center">Duración</th>
-                            <th class="py-4 px-6 text-center">Precio Estándar</th>
-                            <th class="py-4 px-6 text-center">Precio Premium</th>
-                            <th class="py-4 px-6 text-center">Acción</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200">
-                        <!-- Curso 1 - Champion -->
-                        <tr class="course-row" onclick="openModal('champion')">
-                            <td class="py-4 px-6">
-                                <div class="flex items-center">
-                                    <span class="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 font-semibold">1</span>
-                                    <div>
-                                        <p class="font-semibold">Domina la IA y Multiplica Tu Productividad</p>
-                                        <p class="text-sm text-gray-600">Curso fundacional para todos los profesionales</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="py-4 px-6 text-center">6 semanas</td>
-                            <td class="py-4 px-6 text-center">
-                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold">$399</span>
-                            </td>
-                            <td class="py-4 px-6 text-center">
-                                <span class="premium-badge text-white px-3 py-1 rounded-full font-semibold">$499</span>
-                            </td>
-                            <td class="py-4 px-6 text-center">
-                                <button class="bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition-colors">Ver Detalles</button>
-                            </td>
-                        </tr>
-                        
-                        <!-- Curso 2 -->
-                        <tr class="course-row" onclick="openModal('automatiza')">
-                            <td class="py-4 px-6">
-                                <div class="flex items-center">
-                                    <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 font-semibold">2</span>
-                                    <div>
-                                        <p class="font-semibold">Automatiza Tu Negocio</p>
-                                        <p class="text-sm text-gray-600">De procesos manuales a sistemas inteligentes</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="py-4 px-6 text-center">4 semanas</td>
-                            <td class="py-4 px-6 text-center">
-                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold">$399</span>
-                            </td>
-                            <td class="py-4 px-6 text-center">
-                                <span class="premium-badge text-white px-3 py-1 rounded-full font-semibold">$499</span>
-                            </td>
-                            <td class="py-4 px-6 text-center">
-                                <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Ver Detalles</button>
-                            </td>
-                        </tr>
-                        
-                        <!-- Curso 3 -->
-                        <tr class="course-row" onclick="openModal('marketing')">
-                            <td class="py-4 px-6">
-                                <div class="flex items-center">
-                                    <span class="bg-pink-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 font-semibold">3</span>
-                                    <div>
-                                        <p class="font-semibold">Marketing IA</p>
-                                        <p class="text-sm text-gray-600">Vende más trabajando menos</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="py-4 px-6 text-center">4 semanas</td>
-                            <td class="py-4 px-6 text-center">
-                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold">$399</span>
-                            </td>
-                            <td class="py-4 px-6 text-center">
-                                <span class="premium-badge text-white px-3 py-1 rounded-full font-semibold">$499</span>
-                            </td>
-                            <td class="py-4 px-6 text-center">
-                                <button class="bg-pink-500 text-white px-4 py-2 rounded-lg hover:bg-pink-600 transition-colors">Ver Detalles</button>
-                            </td>
-                        </tr>
-                        
-                        <!-- Curso 4 -->
-                        <tr class="course-row" onclick="openModal('datos')">
-                            <td class="py-4 px-6">
-                                <div class="flex items-center">
-                                    <span class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 font-semibold">4</span>
-                                    <div>
-                                        <p class="font-semibold">Datos Inteligentes</p>
-                                        <p class="text-sm text-gray-600">Decisiones que transforman negocios</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="py-4 px-6 text-center">5 semanas</td>
-                            <td class="py-4 px-6 text-center">
-                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold">$599</span>
-                            </td>
-                            <td class="py-4 px-6 text-center">
-                                <span class="premium-badge text-white px-3 py-1 rounded-full font-semibold">$699</span>
-                            </td>
-                            <td class="py-4 px-6 text-center">
-                                <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors">Ver Detalles</button>
-                            </td>
-                        </tr>
-                        
-                        <!-- Curso 5 -->
-                        <tr class="course-row" onclick="openModal('liderazgo')">
-                            <td class="py-4 px-6">
-                                <div class="flex items-center">
-                                    <span class="bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 font-semibold">5</span>
-                                    <div>
-                                        <p class="font-semibold">Liderazgo IA</p>
-                                        <p class="text-sm text-gray-600">Gestiona equipos del futuro</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="py-4 px-6 text-center">4 semanas</td>
-                            <td class="py-4 px-6 text-center">
-                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold">$599</span>
-                            </td>
-                            <td class="py-4 px-6 text-center">
-                                <span class="premium-badge text-white px-3 py-1 rounded-full font-semibold">$699</span>
-                            </td>
-                            <td class="py-4 px-6 text-center">
-                                <button class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors">Ver Detalles</button>
-                            </td>
-                        </tr>
-                        
-                        <!-- Curso 6 -->
-                        <tr class="course-row" onclick="openModal('ceo')">
-                            <td class="py-4 px-6">
-                                <div class="flex items-center">
-                                    <span class="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 font-semibold">6</span>
-                                    <div>
-                                        <p class="font-semibold">CEO IA</p>
-                                        <p class="text-sm text-gray-600">Transforma tu empresa al futuro</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="py-4 px-6 text-center">6 semanas</td>
-                            <td class="py-4 px-6 text-center">
-                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold">$599</span>
-                            </td>
-                            <td class="py-4 px-6 text-center">
-                                <span class="premium-badge text-white px-3 py-1 rounded-full font-semibold">$699</span>
-                            </td>
-                            <td class="py-4 px-6 text-center">
-                                <button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">Ver Detalles</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="grid md:grid-cols-3 gap-6 mt-6">
+                <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+                    <img src="https://i.imgur.com/kTSdMiT.png" alt="Ant-Ara" class="h-12 mx-auto mb-3">
+                    <h3 class="font-semibold text-slate-800">Ant-Ara</h3>
+                    <p class="text-sm text-slate-600">Estructura corporativa, gestión formal y certificaciones internacionales</p>
+                </div>
+                
+                <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+                    <img src="https://i.imgur.com/U1mRq72.png" alt="Innovar con Alejandro" class="h-12 mx-auto mb-3">
+                    <h3 class="font-semibold text-slate-800">Innovar con Alejandro</h3>
+                    <p class="text-sm text-slate-600">Contenido especializado, expertise técnico y metodologías pedagógicas</p>
+                </div>
+                
+                <div class="bg-white p-4 rounded-lg shadow-sm text-center">
+                    <img src="https://i.imgur.com/ObMZWAw.png" alt="Despacho Jorge" class="h-12 mx-auto mb-3">
+                    <h3 class="font-semibold text-slate-800">Despacho Jorge</h3>
+                    <p class="text-sm text-slate-600">Coaching ejecutivo, desarrollo profesional y acompañamiento</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Modal/Popup -->
-    <div id="courseModal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto popup">
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 id="modalTitle" class="text-2xl font-bold text-gray-800"></h3>
-                    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">
-                        <i class="fas fa-times text-2xl"></i>
-                    </button>
+    <!-- Tabla Resumen de Cursos -->
+    <section class="mb-12 page-break">
+        <h2 class="text-2xl font-bold text-slate-800 mb-6">Programa de Cursos de IA para Productividad</h2>
+        
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left">
+                <thead class="text-xs text-slate-700 uppercase bg-slate-100">
+                    <tr>
+                        <th class="px-4 py-3">Curso</th>
+                        <th class="px-4 py-3">Enfoque</th>
+                        <th class="px-4 py-3">Duración</th>
+                        <th class="px-4 py-3">Modalidad</th>
+                        <th class="px-4 py-3">Inversión</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white border-b hover:bg-slate-50">
+                        <td class="px-4 py-3 font-medium text-slate-900">Domina la IA y Multiplica Tu Productividad</td>
+                        <td class="px-4 py-3">Fundacional para todos los profesionales</td>
+                        <td class="px-4 py-3">6 semanas</td>
+                        <td class="px-4 py-3">60% asincrónico<br>40% sincrónico</td>
+                        <td class="px-4 py-3">$399 - $499 USD</td>
+                    </tr>
+                    <tr class="bg-white border-b hover:bg-slate-50">
+                        <td class="px-4 py-3 font-medium text-slate-900">Automatiza Tu Negocio</td>
+                        <td class="px-4 py-3">Automatización de procesos</td>
+                        <td class="px-4 py-3">4 semanas</td>
+                        <td class="px-4 py-3">80% asincrónico<br>20% sincrónico</td>
+                        <td class="px-4 py-3">$399 - $499 USD</td>
+                    </tr>
+                    <tr class="bg-white border-b hover:bg-slate-50">
+                        <td class="px-4 py-3 font-medium text-slate-900">Marketing IA</td>
+                        <td class="px-4 py-3">Marketing y ventas</td>
+                        <td class="px-4 py-3">4 semanas</td>
+                        <td class="px-4 py-3">80% asincrónico<br>20% sincrónico</td>
+                        <td class="px-4 py-3">$399 - $499 USD</td>
+                    </tr>
+                    <tr class="bg-white border-b hover:bg-slate-50">
+                        <td class="px-4 py-3 font-medium text-slate-900">Datos Inteligentes</td>
+                        <td class="px-4 py-3">Análisis y toma de decisiones</td>
+                        <td class="px-4 py-3">5 semanas</td>
+                        <td class="px-4 py-3">70% asincrónico<br>30% sincrónico</td>
+                        <td class="px-4 py-3">$599 - $699 USD</td>
+                    </tr>
+                    <tr class="bg-white border-b hover:bg-slate-50">
+                        <td class="px-4 py-3 font-medium text-slate-900">Liderazgo IA</td>
+                        <td class="px-4 py-3">Gestión de equipos</td>
+                        <td class="px-4 py-3">4 semanas</td>
+                        <td class="px-4 py-3">60% asincrónico<br>40% sincrónico</td>
+                        <td class="px-4 py-3">$599 - $699 USD</td>
+                    </tr>
+                    <tr class="bg-white hover:bg-slate-50">
+                        <td class="px-4 py-3 font-medium text-slate-900">CEO IA</td>
+                        <td class="px-4 py-3">Transformación empresarial</td>
+                        <td class="px-4 py-3">6 semanas</td>
+                        <td class="px-4 py-3">50% asincrónico<br>50% sincrónico</td>
+                        <td class="px-4 py-3">$599 - $699 USD</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="mt-6 text-sm text-slate-600">
+            <p><span class="font-semibold">Nota:</span> Todos los cursos incluyen certificación internacional, materiales descargables y acceso a comunidad privada.</p>
+        </div>
+    </section>
+
+    <!-- Curso Champion - Detalle -->
+    <section class="mb-12 page-break">
+        <div class="champion-special course-card rounded-lg p-1 mb-8">
+            <div class="bg-white rounded-r-lg p-8">
+                <div class="flex items-center mb-6">
+                    <span class="bg-amber-500 text-white text-xl font-bold rounded-full w-10 h-10 flex items-center justify-center mr-4">1</span>
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-800">Curso Champion: Domina la IA y Multiplica Tu Productividad</h2>
+                        <p class="text-slate-600">El curso perfecto para iniciar tu transformación digital</p>
+                    </div>
                 </div>
-                <div id="modalContent" class="text-gray-600"></div>
-                <div class="mt-6 flex flex-col sm:flex-row gap-4">
-                    <a href="https://ant-ara.com/cursos" target="_blank" class="bg-blue-600 text-white px-6 py-3 rounded-lg text-center hover:bg-blue-700 transition-colors">
-                        <i class="fas fa-external-link-alt mr-2"></i>Ver en Ant-Ara.com
-                    </a>
-                    <button onclick="closeModal()" class="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors">
-                        <i class="fas fa-arrow-left mr-2"></i>Volver a cursos
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-800 mb-4">¿Por qué este curso es ideal para empezar?</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start"><span class="text-amber-500 mr-2">•</span> Diseñado para profesionales sin experiencia previa en IA</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2">•</span> Resultados visibles desde la primera semana</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2">•</span> Certificación internacional incluida</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2">•</span> Combinación perfecta de teoría y práctica</li>
+                            <li class="flex items-start"><span class="text-amber-500 mr-2">•</span> Comunidad de profesionales guatemaltecos</li>
+                        </ul>
+                        
+                        <div class="mt-6">
+                            <h3 class="text-xl font-semibold text-slate-800 mb-4">Inversión</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="border border-slate-200 rounded-lg p-4">
+                                    <h4 class="font-semibold">Versión Estándar</h4>
+                                    <p class="text-2xl font-bold text-slate-800">$399 USD</p>
+                                    <p class="text-sm text-slate-600">Incluye certificación Certiprof GAIPC™</p>
+                                </div>
+                                <div class="border border-amber-200 bg-amber-50 rounded-lg p-4">
+                                    <h4 class="font-semibold">Versión Premium</h4>
+                                    <p class="text-2xl font-bold text-slate-800">$499 USD</p>
+                                    <p class="text-sm text-slate-600">+ Microsoft AI Fundamentals y mentoría</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold text-slate-800 mb-4">Módulos del curso</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Módulo 1: Fundamentos de IA para negocios</h4>
+                                <p class="text-sm text-slate-600">Qué es la IA, tipos de IA, aplicaciones prácticas en el entorno laboral, casos de éxito en Guatemala.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Módulo 2: Automatización de tareas repetitivas</h4>
+                                <p class="text-sm text-slate-600">Identificación de procesos automatizables, herramientas no técnicas, implementación paso a paso.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Módulo 3: Generación de contenido con IA</h4>
+                                <p class="text-sm text-slate-600">Redacción de emails, informes, presentaciones; creación de imágenes básicas, optimización de tiempo.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Módulo 4: Análisis de datos básico</h4>
+                                <p class="text-sm text-slate-600">Interpretación de datos, identificación de tendencias, herramientas accesibles para no expertos.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Módulo 5: Implementación ética de IA</h4>
+                                <p class="text-sm text-slate-600">Privacidad de datos, sesgos algorítmicos, uso responsable en el contexto guatemalteco.</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold text-slate-800">Módulo 6: Plan de acción personalizado</h4>
+                                <p class="text-sm text-slate-600">Desarrollo de un plan específico para implementar lo aprendido en el entorno laboral de cada participante.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Información de Contacto -->
+    <section class="bg-slate-50 rounded-lg p-8 no-print">
+        <h2 class="text-2xl font-bold text-slate-800 mb-6">¿Interesado en formar parte de nuestro ecosistema?</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <div>
+                <h3 class="text-lg font-semibold text-slate-800 mb-4">Contacto directo</h3>
+                <div class="space-y-3">
+                    <p class="flex items-center">
+                        <span class="bg-slate-200 rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                            <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 极速赛车公众号开奖 极速赛车公众号平台 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </span>
+                        contacto@ant-ara.com
+                    </p>
+                    
+                    <p class="flex items-center">
+                        <span class="bg-slate-200 rounded-full w-8 h-8 flex items-center justify-center mr-3">
+                            <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
+                        </span>
+                        @productividadconia (Telegram)
+                    </p>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-lg font-semibold text-slate-800 mb-4">Sitio web</h3>
+                <a href="https://ant-ara.com/cursos-ia" class="inline-flex items-center text-blue-600 hover:text-blue-800">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                    </svg>
+                    ant-ara.com/cursos-ia
+                </a>
+                
+                <div class="mt-6">
+                    <button onclick="window.print()" class="flex items-center text-slate-600 hover:text-slate-800">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m4 4h6a2 2 0 002-2v-4a2 2 0 00-2-2h-6a2 2 0 00-2 2v4a2 2 0 002 2z"></path>
+                        </svg>
+                        Descargar como PDF
                     </button>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Popup de Inscripción (aparece después de 30 segundos) -->
-    <div id="inscriptionPopup" class="fixed bottom-4 right-4 bg-white rounded-lg shadow-xl p-6 max-w-sm z-50 hidden popup">
-        <div class="flex justify-between items-start mb-4">
-            <h3 class="text-xl font-bold text-gray-800">¿Listo para transformar tu productividad?</h3>
-            <button onclick="closeInscriptionPopup()" class="text-gray-400 hover:text-gray-600">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <p class="text-gray-600 mb-4">Únete a más de 200 profesionales que ya están aplicando IA en sus negocios</p>
-        <div class="flex flex-col gap-2">
-            <a href="https://ant-ara.com/inscripcion" class="bg-amber-500 text-white py-2 px-4 rounded-lg text-center hover:bg-amber-600 transition-colors">
-                ¡Quiero Inscribirme!
-            </a>
-            <button onclick="closeInscriptionPopup()" class="text-gray-500 text-sm hover:text-gray-700">
-                Tal vez después
-            </button>
-        </div>
-    </div>
-
-    <script>
-        // Datos de los cursos
-        const courses = {
-            champion: {
-                title: "Domina la IA y Multiplica Tu Productividad en 30 Días",
-                content: `
-                    <div class="space-y-4">
-                        <div>
-                            <h4 class="font-semibold text-lg mb-2">🏆 Curso Champion - El más popular</h4>
-                            <p>Diseñado para profesionales sin experiencia previa en IA que quieren resultados rápidos y prácticos.</p>
-                        </div>
-                        
-                        <div>
-                            <h4 class="font-semibold mb-2">📋 Contenido:</h4>
-                            <ul class="list-disc list-inside space-y-1">
-                                <li>Fundamentos de IA para negocios</li>
-                                <li>Automatización de tareas repetitivas</li>
-                                <li>Generación de contenido con IA</li>
-                                <li>Análisis de datos básico</li>
-                                <li>Implementación ética de IA</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-4 mt-6">
-                            <div class="border rounded-lg p-4">
-                                <h5 class="font-semibold mb-2">Versión Estándar: $399</h5>
-                                <p class="text-sm">Incluye certificación Certiprof Generative AI Professional (GAIPC™)</p>
-                            </div>
-                            <div class="border rounded-lg p-4 bg-gray-50">
-                                <h5 class="font-semibold mb-2">Versión Premium: $499</h5>
-                                <p class="text-sm">+ Microsoft AI Fundamentals y mentoría personalizada</p>
-                            </div>
-                        </div>
-                    </div>
-                `
-            },
-            automatiza: {
-                title: "Automatiza Tu Negocio: De Manual a Inteligente",
-                content: `
-                    <div class="space-y-4">
-                        <p>Convierte procesos manuales en sistemas automatizados que funcionan 24/7 sin supervisión constante.</p>
-                        
-                        <div>
-                            <h4 class="font-semibold mb-2">📋 Contenido:</h4>
-                            <ul class="list-disc list-inside space-y-1">
-                                <li>Identificación de procesos automatizables</li>
-                                <li>Flujos de trabajo con Power Automate</li>
-                                <li>Integración entre sistemas</li>
-                                <li>Robotic Process Automation (RPA) básico</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-4 mt-6">
-                            <div class="border rounded-lg p-4">
-                                <h5 class="font-semibold mb-2">Versión Estándar: $399</h5>
-                                <p class="text-sm">Incluye Microsoft Power Platform Fundamentals ($99 value)</p>
-                            </div>
-                            <div class="border rounded-lg p-4 bg-gray-50">
-                                <h5 class="font-semibold mb-2">Versión Premium: $499</h5>
-                                <p class="text-sm">+ Advanced Automation Certification</p>
-                            </div>
-                        </div>
-                    </div>
-                `
-            },
-            marketing: {
-                title: "Marketing IA: Vende Más Trabajando Menos",
-                content: `
-                    <div class="space-y-4">
-                        <p>Potencia tus estrategias de marketing con herramientas de inteligencia artificial que generan contenido, analizan datos y automatizan campañas.</p>
-                        
-                        <div>
-                            <h4 class="font-semibold mb-2">📋 Contenido:</h4>
-                            <ul class="list-disc list-inside space-y-1">
-                                <li>Generación de contenido con IA</li>
-                                <li>Personalización a escala</li>
-                                <li>Análisis de clientes y segmentación</li>
-                                <li>Automatización de campañas</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-4 mt-6">
-                            <div class="border rounded-lg p-4">
-                                <h5 class="font-semibold mb-2">Versión Estándar: $399</h5>
-                                <p class="text-sm">Certiprof Generative AI for Marketing (GAIFMPC™)</p>
-                            </div>
-                            <div class="border rounded-lg p-4 bg-gray-50">
-                                <h5 class="font-semibold mb-2">Versión Premium: $499</h5>
-                                <p class="text-sm">+ Google AI Marketing Certification</p>
-                            </div>
-                        </div>
-                    </div>
-                `
-            },
-            datos: {
-                title: "Datos Inteligentes: Decisiones Que Transforman Negocios",
-                content: `
-                    <div class="space-y-4">
-                        <p>Aprende a transformar datos en insights accionables que driveen el crecimiento de tu negocio.</p>
-                        
-                        <div>
-                            <h4 class="font-semibold mb-2">📋 Contenido:</h4>
-                            <ul class="list-disc list-inside space-y-1">
-                                <li>Análisis predictivo básico</li>
-                                <li>Visualización de datos</li>
-                                <li>Interpretación de métricas clave</li>
-                                <li>Herramientas de business intelligence</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-4 mt-6">
-                            <div class="border rounded-lg p-4">
-                                <h5 class="font-semibold mb-2">Versión Estándar: $599</h5>
-                                <p class="text-sm">Certiprof Data Storytelling Professional (DSTPC™)</p>
-                            </div>
-                            <div class="border rounded-lg p-4 bg-gray-50">
-                                <h5 class="font-semibold mb-2">Versión Premium: $699</h5>
-                                <p class="text-sm">+ Microsoft Fabric Analytics</p>
-                            </div>
-                        </div>
-                    </div>
-                `
-            },
-            liderazgo: {
-                title: "Liderazgo IA: Gestiona Equipos del Futuro",
-                content: `
-                    <div class="space-y-4">
-                        <p>Desarrolla las habilidades necesarias para liderar equipos en la era de la inteligencia artificial.</p>
-                        
-                        <div>
-                            <h4 class="font-semibold mb-2">📋 Contenido:</h4>
-                            <ul class="list-disc list-inside space-y-1">
-                                <li>Gestión del cambio tecnológico</li>
-                                <li>Equipos multidisciplinarios</li>
-                                <li>Ética y gobernanza de IA</li>
-                                <li>Casos de estudio de implementación</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-4 mt-6">
-                            <div class="border rounded-lg p-4">
-                                <h5 class="font-semibold mb-2">Versión Estándar: $599</h5>
-                                <p class="text-sm">PMI Cognitive Project Management in AI (CPMAI)</p>
-                            </div>
-                            <div class="border rounded-lg p-4 bg-gray-50">
-                                <h5 class="font-semibold mb-2">Versión Premium: $699</h5>
-                                <p class="text-sm">+ Advanced PMI Certification</p>
-                            </div>
-                        </div>
-                    </div>
-                `
-            },
-            ceo: {
-                title: "CEO IA: Transforma Tu Empresa al Futuro",
-                content: `
-                    <div class="space-y-4">
-                        <p>Estrategias de alto nivel para CEOs y gerentes que buscan transformar completamente sus organizaciones.</p>
-                        
-                        <div>
-                            <h4 class="font-semibold mb-2">📋 Contenido:</h4>
-                            <ul class="list-disc list-inside space-y-1">
-                                <li>Estrategia digital corporativa</li>
-                                <li>Inversión en tecnología</li>
-                                <li>Transformación cultural</li>
-                                <li>ROI de implementaciones de IA</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-4 mt-6">
-                            <div class="border rounded-lg p-4">
-                                <h5 class="font-semibold mb-2">Versión Estándar: $599</h5>
-                                <p class="text-sm">Certiprof Business Agility Professional (BAPC™)</p>
-                            </div>
-                            <div class="border rounded-lg p-4 bg-gray-50">
-                                <h5 class="font-semibold mb-2">Versión Premium: $699</h5>
-                                <p class="text-sm">+ Executive AI Leadership Cert</p>
-                            </div>
-                        </div>
-                    </div>
-                `
-            }
-        };
-
-        // Funciones para el modal
-        function openModal(courseId) {
-            document.getElementById('modalTitle').textContent = courses[courseId].title;
-            document.getElementById('modalContent').innerHTML = courses[courseId].content;
-            document.getElementById('courseModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.getElementById('courseModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Funciones para el popup de inscripción
-        function showInscriptionPopup() {
-            document.getElementById('inscriptionPopup').classList.remove('hidden');
-        }
-
-        function closeInscriptionPopup() {
-            document.getElementById('inscriptionPopup').classList.add('hidden');
-        }
-
-        // Mostrar popup después de 30 segundos
-        setTimeout(showInscriptionPopup, 30000);
-
-        // Cerrar modal al hacer clic fuera del contenido
-        document.getElementById('courseModal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-    </script>
+    <footer class="mt-12 pt-8 border-t border-slate-200 text-center text-slate-500 text-sm">
+        <p>© 2024 Ant-Ara · Innovar con Alejandro · Despacho Jorge</p>
+        <p class="mt-2">Programa de Cursos de IA para Productividad Profesional - Guatemala</p>
+    </footer>
 </body>
 </html>
